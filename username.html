@@ -1,0 +1,100 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+    function myFun(){
+          
+          var correct_way = /^[A-Za-z]+$/;
+
+          var a= document.getElementById("User_Name").value;
+          if(a==""){
+              document.getElementById("UsernameMessage").innerHTML="** Please fill username";
+              return false;
+          }
+          if(a.length<=5){
+              document.getElementById("UsernameMessage").innerHTML="** username must be greater than 5 charcters";
+              return false;
+          }
+          if(a.length>20){
+              document.getElementById("UsernameMessage").innerHTML="** username must be less than 20 charcters";
+              return false;
+          }
+          if(a.match(correct_way))
+              true;
+              else{
+              document.getElementById("UsernameMessage").innerHTML="** Only alphabets are allowed";
+              return false;
+          }
+          var pass= document.getElementById("Pass_Word").value;
+          if(pass==""){
+              document.getElementById("PasswordMessage").innerHTML="** Password can't be blank";
+              return false;
+          }
+          if(pass.length<=5){
+              document.getElementById("PasswordMessage").innerHTML="** Password must be greater than 5 charcters";
+              return false;
+          }
+          if(pass.length>20){
+              document.getElementById("PasswordMessage").innerHTML="** Password must be less than 20 charcters";
+              return false;
+          }
+          var con= document.getElementById("cnumber").value;
+          if(con==""){
+              document.getElementById("ContactMessage").innerHTML="** Kindly provide the contact number ";
+              return false;
+          }
+          if(isNaN(con)){
+              document.getElementById("ContactMessage").innerHTML="** Only digits are allowed ";
+              return false;
+          }
+          if(con.length<10 || con.length>10){
+              document.getElementById("ContactMessage").innerHTML="** The contact number should contain 10 digits ";
+              return false;
+          }
+          var em= document.getElementById("e_mail").value;
+          if(em==""){
+              document.getElementById("EmailMessage").innerHTML="** Email can't be blank";
+              return false;
+          }
+          if((em.charAt(em.length-4)!='.') && (em.charAt(em.length-3)!='.')){
+              document.getElementById("EmailMessage").innerHTML="** Kindly enter valid email id as invalid . Position at 4";
+              return false;
+          }
+          var dob= document.getElementById("DOB").value;
+          var pattern = /^([0-9]{2})-([0-9]{2})-([0-9]{4})$/;
+          if(dob==""){
+              document.getElementById("DobMessage").innerHTML="** Date of Birth is missing!!! ";
+              return false;
+          }
+          if (dob == null || dob == "" || !pattern.test(dob)){
+              document.getElementById("DobMessage").innerHTML="** Invalid date of birth and valid DOB pattern is dd-mm-yyyy ";
+              return false;
+          }else {
+        return true
+          }
+           
+          
+ }
+</script>
+
+<form onsubmit="return myFun()">
+UserName : <input type="text" id="User_Name" value="">
+<span id="UsernameMessage"> </span>
+<br></br>
+PassWord : <input type="password" id="Pass_Word" value="">
+<span id="PasswordMessage"> </span>
+<br></br>
+Contact : <input type="text" id="cnumber" value="">
+<span id="ContactMessage"> </span>
+<br></br>
+Email : <input type="text" id="e_mail" value="">
+<span id="EmailMessage"> </span>
+<br></br>
+DateofBirth : <input type="text" id="DOB" value="">
+<span id="DobMessage"> </span>
+<br></br>
+<input type="submit" value="Submit"></input> 
+</form>
+</body>
+</html>
